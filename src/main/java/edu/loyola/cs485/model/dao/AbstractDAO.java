@@ -1,4 +1,4 @@
 package edu.loyola.cs485.model.dao;
 
-public class AbstractDAO {
+public abstract class AbstractDAO {
 }
