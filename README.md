@@ -44,7 +44,7 @@ create table Stage(
 id_stage int not null auto_increment,
 name_stage varchar(20) not null,
 size varchar(10) not null,
-layout blob,
+layout blob, //actually varchar  
 constraint Stage_PK primary key (id_stage)
 );
 
