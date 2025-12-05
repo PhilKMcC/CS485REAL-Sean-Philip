@@ -80,7 +80,7 @@ public class StageDAO extends AbstractDAO<Stage>{
         while (rs.next()) {
             Stage s = new Stage();
             s.setID(rs.getInt("id_stage"));
-            s.setName(rs.getString("name_stage") );
+            s.setName(rs.getString("name_stage"));
             s.setSize(rs.getString("size"));
             s.setLayout(rs.getString("layout"));
 
