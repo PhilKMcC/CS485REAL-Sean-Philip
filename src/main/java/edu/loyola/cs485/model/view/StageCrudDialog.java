@@ -1,7 +1,11 @@
 package edu.loyola.cs485.model.view;
 
+import edu.loyola.cs485.controller.StageService;
+import edu.loyola.cs485.model.entity.Stage;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.List;
 
 public class StageCrudDialog extends JDialog {
     private JPanel contentPane;
@@ -43,6 +47,18 @@ public class StageCrudDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onDelete();
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onUpdate();
+            }
+        });
     }
 
     private void onNew() {
@@ -54,6 +70,47 @@ public class StageCrudDialog extends JDialog {
     private void onCancel() {
         // add your code here if necessary
         dispose();
+    }
+
+    private void onDelete() {
+        try{
+            StageService service = new StageService();
+            Stage s = (Stage) stageListUI.getSelectedValue();
+            if (s != null) {
+                service.deleteStage(s.getID());
+                stageListUI.clearSelection();
+
+                // Repopulate the JList to get new data
+                populateUI(); // fetch everything again from the DB
+            }
+
+        }catch(Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void populateUI() {
+        try {
+            StageService service = new StageService();
+            List<Stage> lstdata = service.getAllStages();
+
+            stageListUI.setListData( lstdata.toArray() );
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
+
+    public void updateClick() {
+        try{
+            StageService service = new StageService();
+            // Use setters
+            Stage s = (Stage) stageListUI.getSelectedValue();
+
+        }catch(Exception e){
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     public static void main(String[] args) {
