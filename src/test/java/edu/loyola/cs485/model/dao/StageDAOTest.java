@@ -29,6 +29,26 @@ public class StageDAOTest {
         );
     }
 
+    @Test
+    public void TestDeleteStage() throws Exception{
+        StageDAO dao = new StageDAO();
+        dao.setTestDatabase();
+        Stage stage = new Stage();
+
+        stage.setName("field");
+        stage.setSize("normal");
+        stage.setLayout("standard");
+
+        dao.create(stage);
+
+        dao.delete( stage.getID() );
+
+        assertAll(
+                () -> assertNotNull(stage.getID()),
+                () -> assertNull(dao.read(stage.getID()).getID())
+        );
+    }
+
 
     @Test
     public void testReadClient() throws Exception{
@@ -82,4 +102,6 @@ public class StageDAOTest {
                 () -> assertEquals(found.getLayout(), stage.getLayout())
         );
     }
+
+
 }
