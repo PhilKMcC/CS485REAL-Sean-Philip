@@ -10,15 +10,19 @@ public class Stage extends AbstractEntity{
     public Integer getID(){
         return ID;
     }
+
     public void setID(Integer ID){
         this.ID = ID;
     }
+
     public String getName(){
         return Name;
     }
+
     public void setName(String Name){
         this.Name = Name;
     }
+
     public String getSize(){
         return Size;
     }
@@ -35,6 +39,9 @@ public class Stage extends AbstractEntity{
         this.Layout = Layout;
     }
 
-
+    @Override
+    public String toString(){
+        return getID().toString()+": "+getName()+" <"+getSize()+"> <"+getLayout()+">";
+    }
 
 }
