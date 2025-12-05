@@ -10,7 +10,7 @@ public abstract class AbstractDAO<E> {
     private String Port = "3306"; //default MySQL port
     private String Database = "game_db"; // database/schema name
     private String Username = "cs485"; //read this from a local file
-    private String Password = "password"; //Also read this from a file
+    private String Password = "groupproject14"; //Also read this from a file
 
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(ConUrl+":"+Port+"/"+Database+ "?user="+Username+"&password="+Password);
