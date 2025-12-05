@@ -53,7 +53,7 @@ public class StageDAO extends AbstractDAO<Stage>{
     @Override
     public void update(Stage entity) throws SQLException {
         Connection con = getConnection();
-        String sql = "UPDATE Stage SET name = ? , size = ? , layout = ? where id_stage = ? ";
+        String sql = "UPDATE Stage SET name_stage = ? , size = ? , layout = ? where id_stage = ? ";
 
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, entity.getName());

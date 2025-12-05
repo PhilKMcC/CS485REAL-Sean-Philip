@@ -56,12 +56,12 @@ public class StageEditDialog extends JDialog {
     private void onOK() {
         StageService service = new StageService();
         int id = Integer.parseInt(idField.getText());
-        String name = nameField.getText();
+        String names = nameField.getText();
         String size = sizeField.getText();
         String layout = layoutField.getText();
 
         try {
-            service.updateStage(id,name,size,layout);
+            service.updateStage(id,names,size,layout);
             dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
