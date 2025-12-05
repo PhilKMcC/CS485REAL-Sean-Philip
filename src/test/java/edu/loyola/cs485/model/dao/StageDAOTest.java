@@ -6,6 +6,7 @@ import edu.loyola.cs485.model.dao.StageDAO;
 import edu.loyola.cs485.model.entity.Stage;
 
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 
 
 public class StageDAOTest {

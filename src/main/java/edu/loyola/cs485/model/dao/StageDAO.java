@@ -57,8 +57,8 @@ public class StageDAO extends AbstractDAO<Stage>{
 
         PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, entity.getName());
-        pst.setString(2, entity.getLayout());
-        pst.setString(3,entity.getSize());
+        pst.setString(2, entity.getSize());
+        pst.setString(3,entity.getLayout());
         pst.setInt(4,entity.getID());
 
         pst.executeUpdate();
