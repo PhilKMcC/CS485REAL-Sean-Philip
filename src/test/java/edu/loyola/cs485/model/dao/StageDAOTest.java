@@ -7,6 +7,7 @@ import edu.loyola.cs485.model.entity.Stage;
 
 import java.sql.SQLException;
 import java.sql.SQLOutput;
+import java.util.List;
 
 
 public class StageDAOTest {
@@ -103,6 +104,19 @@ public class StageDAOTest {
                 () -> assertEquals(found.getLayout(), stage.getLayout())
         );
     }
+
+    @Test
+    public void testListClient() throws Exception{
+        StageDAO dao = new StageDAO();
+        dao.setTestDatabase();
+
+        List<Stage> lst = dao.list();
+        assertAll(
+                () -> assertEquals(0, lst.size())
+        );
+
+    }
+
 
 
 }
