@@ -22,6 +22,8 @@ public class StageDAOTest {
 
         dao.create(stage);
 
+        dao.delete( stage.getID() );
+
         assertAll(
                 () -> assertNotNull(stage.getID())
         );
@@ -51,5 +53,31 @@ public class StageDAOTest {
                 () -> assertEquals(found.getLayout(), stage.getLayout())
         );
 
+    }
+    @Test
+    public void TestUpdateStage() throws Exception{
+        StageDAO dao = new StageDAO();
+        dao.setTestDatabase();
+        Stage stage = new Stage();
+
+        stage.setName("mansion");
+        stage.setSize("big");
+        stage.setLayout("standard");
+
+        dao.create(stage);
+
+        stage.setSize("small");
+        stage.setLayout("walk off");
+
+        Stage found = dao.read(stage.getID()); //Function under test
+
+        dao.delete( stage.getID() );
+
+        assertAll(
+                () -> assertNotNull(stage.getID()),
+                () -> assertEquals(found.getName(), stage.getName()),
+                () -> assertEquals(found.getSize(), stage.getSize()),
+                () -> assertEquals(found.getLayout(), stage.getLayout())
+        );
     }
 }
