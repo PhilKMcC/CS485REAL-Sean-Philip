@@ -13,7 +13,9 @@ public abstract class AbstractDAO<E> {
     private String Password = "groupproject14"; //Also read this from a file
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(ConUrl+":"+Port+"/"+Database+ "?user="+Username+"&password="+Password);
+        Connection con = DriverManager.getConnection(ConUrl+":"+Port+"/"+Database+ "?user="+Username+"&password="+Password);
+        System.out.println("connection connected");
+        return con;
     }
 
     // Abstract Methods for each CRUD operation

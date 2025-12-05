@@ -20,6 +20,7 @@ public class StageCrudDialog extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        populateUI();
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -95,8 +96,11 @@ public class StageCrudDialog extends JDialog {
             List<Stage> lstdata = service.getAllStages();
 
             stageListUI.setListData( lstdata.toArray() );
+            System.out.println("populated");
+
 
         } catch (Exception e) {
+            System.out.println("failed to populate");
             System.out.println("Error: " + e.getMessage());
         }
 

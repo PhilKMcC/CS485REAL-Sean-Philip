@@ -25,13 +25,13 @@ public class StageInfoDialog extends JDialog {
         enterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                onEnter();
             }
         });
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                onCancel();
             }
         });
 
@@ -61,7 +61,7 @@ public class StageInfoDialog extends JDialog {
         StageInfoDialog dialog = new StageInfoDialog();
         dialog.pack();
         dialog.setVisible(true);
-        //System.exit(0);
+        System.exit(0);
     }
 
 }
