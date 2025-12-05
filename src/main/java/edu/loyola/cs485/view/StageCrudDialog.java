@@ -102,11 +102,17 @@ public class StageCrudDialog extends JDialog {
 
     }
 
-    public void updateClick() {
+    public void onUpdate() {
         try{
             StageService service = new StageService();
-            // Use setters
             Stage s = (Stage) stageListUI.getSelectedValue();
+            if (s != null) {
+                service.updateStage(s.getID(), /*String name, String size, String layout*/);
+                stageListUI.clearSelection();
+
+                // Repopulate the JList to get new data
+                populateUI(); // fetch everything again from the DB
+            }
 
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());
