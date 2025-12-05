@@ -69,6 +69,8 @@ public class StageDAOTest {
         stage.setSize("small");
         stage.setLayout("walk off");
 
+        dao.update(stage);
+
         Stage found = dao.read(stage.getID()); //Function under test
 
         dao.delete( stage.getID() );
