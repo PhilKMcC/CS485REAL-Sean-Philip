@@ -9,6 +9,8 @@ public class StageCrudDialog extends JDialog {
     private JButton buttonCancel;
     private JButton deleteButton;
     private JButton updateButton;
+    private JList stageListUI;
+    private JList StageUI;
 
     public StageCrudDialog() {
         setContentPane(contentPane);
@@ -17,7 +19,7 @@ public class StageCrudDialog extends JDialog {
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                onNew();
             }
         });
 
@@ -43,9 +45,10 @@ public class StageCrudDialog extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
-        // add your code here
-        dispose();
+    private void onNew() {
+        StageInfoDialog dialog = new StageInfoDialog();
+        dialog.pack();
+        dialog.setVisible(true);
     }
 
     private void onCancel() {
