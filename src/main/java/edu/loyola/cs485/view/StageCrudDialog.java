@@ -1,4 +1,4 @@
-package edu.loyola.cs485.model.view;
+package edu.loyola.cs485.view;
 
 import edu.loyola.cs485.controller.StageService;
 import edu.loyola.cs485.model.entity.Stage;
