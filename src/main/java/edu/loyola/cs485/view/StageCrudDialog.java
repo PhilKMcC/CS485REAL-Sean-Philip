@@ -66,6 +66,7 @@ public class StageCrudDialog extends JDialog {
         StageInfoDialog dialog = new StageInfoDialog();
         dialog.pack();
         dialog.setVisible(true);
+        populateUI();
     }
 
     private void onCancel() {
@@ -111,7 +112,9 @@ public class StageCrudDialog extends JDialog {
             StageService service = new StageService();
             Stage s = (Stage) stageListUI.getSelectedValue();
             if (s != null) {
-                service.updateStage(s.getID(), /*String name, String size, String layout*/);
+                StageEditDialog dialog = new StageEditDialog(s);
+                dialog.pack();
+                dialog.setVisible(true);
                 stageListUI.clearSelection();
 
                 // Repopulate the JList to get new data

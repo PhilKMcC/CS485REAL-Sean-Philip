@@ -1,6 +1,7 @@
 package edu.loyola.cs485.view;
 
 import edu.loyola.cs485.controller.StageService;
+import edu.loyola.cs485.model.entity.Stage;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -12,14 +13,17 @@ public class StageEditDialog extends JDialog {
     private JTextField nameField;
     private JTextField sizeField;
     private JTextField layoutField;
-    private JFormattedTextField idField;
+    private JTextField idField;
 
-    public StageEditDialog() {
+    public StageEditDialog(Stage s) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
-        //nameField.setText();
+        idField.setText(String.valueOf(s.getID()));
+        nameField.setText(s.getName());
+        sizeField.setText(s.getSize());
+        layoutField.setText(s.getLayout());
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -51,13 +55,13 @@ public class StageEditDialog extends JDialog {
 
     private void onOK() {
         StageService service = new StageService();
-        //int id = idField.getText();
+        int id = Integer.parseInt(idField.getText());
         String name = nameField.getText();
         String size = sizeField.getText();
         String layout = layoutField.getText();
 
         try {
-            //service.updateStage(name,size,layout);
+            service.updateStage(id,name,size,layout);
             dispose();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -71,9 +75,9 @@ public class StageEditDialog extends JDialog {
     }
 
     public static void main(String[] args) {
-        StageEditDialog dialog = new StageEditDialog();
-        dialog.pack();
-        dialog.setVisible(true);
+        //StageEditDialog dialog = new StageEditDialog();
+        //dialog.pack();
+        //dialog.setVisible(true);
         System.exit(0);
     }
 }
