@@ -69,6 +69,24 @@ public class StageDAO extends AbstractDAO<Stage>{
 
     @Override
     public List<Stage> list() throws SQLException {
-        return List.of();
+        ArrayList<Stage> stageList = new ArrayList<>();
+
+        Connection con = getConnection();
+        String sql = "SELECT * FROM Stage ORDER BY name_stage ";
+
+        PreparedStatement pst = con.prepareStatement(sql);
+
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            Stage s = new Stage();
+            s.setID(rs.getInt("id_stage"));
+            s.setName(rs.getString("name_stage") );
+            s.setSize(rs.getString("size"));
+            s.setLayout(rs.getString("layout"));
+
+            stageList.add(s);
+        }
+
+        return stageList;
     }
 }
